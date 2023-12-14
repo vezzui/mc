@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHIO VBUCKS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f8ff; /* Light Blue */
+        }
+
+        #logo {
+            color: #00bfff; /* Light Blue */
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #logo img {
+            margin-left: 10px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        #inputBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #username {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        #vindertechBtn {
+            background-color: #ff0000; /* Red */
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #vindertechBtn:hover {
+            background-color: #cc0000; /* Darker Red on Hover */
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #00f; /* Blue */
+            color: #fff;
+            text-align: center;
+            font-size: 2em;
+            z-index: 2;
+        }
+
+        #result {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        #imageContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+        }
+
+        #imageContainer img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #hackingText {
+            color: red;
+            font-size: 2em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        OHIO VBUCKS
+        <img src="vbucks.png" alt="Vbucks">
+    </div>
+    
+    <div id="inputBox">
+        <input type="text" id="username" placeholder="Enter username">
+        <button id="vindertechBtn" onclick="activateVindertech()">Generate Vindertech Bucks</button>
+    </div>
+
+    <div id="overlay">
+        <div id="result">
+            Generating 9999999 vbucks for <span id="usernameDisplay"></span>...
+        </div>
+    </div>
+
+    <div id="imageContainer">
+        <img src="image.png" alt="Image" onload="startFlashing()">
+        <div id="hackingText">HACKING ACCOUNT <span id="usernameHacking"></span></div>
+    </div>
+
+    <script>
+        const backgroundAudio = new Audio("path/to/stw.mp3");
+        const screamAudio = new Audio("path/to/scream.mp3");
+
+        function activateVindertech() {
+            const username = document.getElementById("username").value;
+            document.getElementById("usernameDisplay").innerText = username;
+            document.getElementById("usernameHacking").innerText = username;
+            document.getElementById("overlay").style.display = "flex";
+            backgroundAudio.play();
+
+            setTimeout(() => {
+                document.getElementById("result").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("imageContainer").style.display = "flex";
+                backgroundAudio.pause();
+                backgroundAudio.currentTime = 0;
+                screamAudio.play();
+            }, 5000);
+        }
+
+        function startFlashing() {
+            setInterval(() => {
+                let hackingText = document.getElementById("hackingText");
+                hackingText.style.color = (hackingText.style.color === "white") ? "red" : "white";
+            }, 500);
+        }
+    </script>
+</body>
+</html>
