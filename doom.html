@@ -29,5 +29,30 @@
     <!-- Embedding an external website using an iframe -->
     <iframe id="embeddedFrame" src="https://ustymukhman.github.io/webDOOM/public/" frameborder="0"></iframe>
 
+    <script>
+        const embeddedFrame = document.getElementById('embeddedFrame');
+
+        // Handle full-screen request
+        function requestFullScreen() {
+            if (embeddedFrame.requestFullscreen) {
+                embeddedFrame.requestFullscreen();
+            } else if (embeddedFrame.mozRequestFullScreen) {
+                embeddedFrame.mozRequestFullScreen();
+            } else if (embeddedFrame.webkitRequestFullscreen) {
+                embeddedFrame.webkitRequestFullscreen();
+            } else if (embeddedFrame.msRequestFullscreen) {
+                embeddedFrame.msRequestFullscreen();
+            }
+        }
+
+        // You can trigger the full-screen request using a button or any other trigger
+        const fullScreenButton = document.createElement('button');
+        fullScreenButton.innerText = 'Full Screen';
+        fullScreenButton.addEventListener('click', requestFullScreen);
+
+        // Append the full-screen button to the body or any other container
+        document.body.appendChild(fullScreenButton);
+    </script>
+
 </body>
 </html>
